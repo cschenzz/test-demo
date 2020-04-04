@@ -6,6 +6,8 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
  * junit5测试
  * <p>
@@ -21,7 +23,7 @@ public class TempHttpTests {
      * testGet
      */
     @Test
-    public void testGet() {
+    void testGet() {
         String url = host + "/api/v1/roles";
         //================================
         String result = HttpRequest.get(url)
@@ -34,12 +36,12 @@ public class TempHttpTests {
     }
 
     @Test
-    public void testXlogin() {
+    void testXlogin() {
         String url = "http://114.115.232.199:2020" + "/api/app/v1/public/loginWithAccount";
         //---------------------
         Dict dt = Dict.create()
                 .set("account", "15170707553")
-                .set("password", "56666666666");
+                .set("password", "6666666666");
         String json = JSONUtil.toJsonStr(dt);
         //================================
         String result = HttpRequest.post(url)
@@ -48,5 +50,8 @@ public class TempHttpTests {
         String prettyJson = JSONUtil.toJsonPrettyStr(result);
         Console.log(url + "\r\n-------------------------");
         Console.log(prettyJson);
+
+        int code = JSONUtil.parseObj(result).getInt("code");
+        assertEquals(200, code);
     }
 }
