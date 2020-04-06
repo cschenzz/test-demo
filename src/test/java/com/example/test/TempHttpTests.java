@@ -2,11 +2,13 @@ package com.example.test;
 
 import cn.hutool.core.lang.Console;
 import cn.hutool.core.lang.Dict;
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONUtil;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * junit5测试
@@ -52,6 +54,7 @@ public class TempHttpTests {
         Console.log(prettyJson);
 
         int code = JSONUtil.parseObj(result).getInt("code");
+        assertTrue(StrUtil.isNotBlank(result));
         assertEquals(200, code);
     }
 }
