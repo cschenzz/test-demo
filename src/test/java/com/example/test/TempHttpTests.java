@@ -39,11 +39,11 @@ public class TempHttpTests {
 
     @Test
     void testXlogin() {
-        String url = "http://114.115.232.199:2020" + "/api/app/v1/public/loginWithAccount";
+        String url = host + "/api/app/v1/public/loginWithAccount";
         //---------------------
         Dict dt = Dict.create()
-                .set("account", "15170707553")
-                .set("password", "6666666666");
+                .set("account", "13800138000")
+                .set("password", "55555");
         String json = JSONUtil.toJsonStr(dt);
         //================================
         String result = HttpRequest.post(url)
